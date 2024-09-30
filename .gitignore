@@ -9,3 +9,14 @@ __pycache__/
 
 # Ignore virtual environments
 venv/
+
+# Ignore node_modules folder
+node_modules/
+
+# Ignore SQLite database file
+finance_management_system/db.sqlite3
+
+# Ignore cookies.txt file used for cURL testing
+finance_management_system/cookies.txt
+
+
