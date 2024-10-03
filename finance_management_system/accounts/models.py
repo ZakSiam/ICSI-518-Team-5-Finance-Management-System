@@ -15,7 +15,7 @@ class RecurringExpense(models.Model):
     description= models.CharField(max_length=250)
     amount = models.FloatField()
     category = models.CharField(max_length=150)
-    # frequency = models.CharField(max_length=250)
+    frequency = models.CharField(max_length=250)
     date= models.CharField(max_length=100)
 
 

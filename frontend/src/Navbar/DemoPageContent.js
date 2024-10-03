@@ -26,7 +26,7 @@ import ChangePassword from './ChangePassword';
 
 const expenseCategories = [
   { name: 'Food & Dining', color: 'primary', emoji: '🍽️' },
-  { name: 'Transportation', color: '#42a5f5', emoji: '🚗' },
+  { name: 'Transportation', color: 'yellow', emoji: '🚗' },
   { name: 'Utilities', color: '#f50057', emoji: '💡' },
   { name: 'Housing', color: '#9575cd', emoji: '🏠' },
   { name: 'Healthcare', color: '#66bb6a', emoji: '💊' },
@@ -37,7 +37,6 @@ const expenseCategories = [
 ];
 
 function DemoPageContent({ pathname, router }) {
-  // console.log("useEffect running...");
   const [expenses, setExpenses] = useState([]);
   const [openCategory, setOpenCategory] = useState(null);
   const [editingExpense, setEditingExpense] = useState(null);
@@ -74,9 +73,7 @@ function DemoPageContent({ pathname, router }) {
 
   // Dynamic background color based on dark mode
 
-    
-
-  /* const addExpense = (newExpense) => {
+    /* const addExpense = (newExpense) => {
     setExpenses((prevExpenses) => [...prevExpenses, { ...newExpense, id: Date.now() }]);
   }; */
 
@@ -229,14 +226,14 @@ function DemoPageContent({ pathname, router }) {
         <Box sx={{ marginTop: 3, width: '100%', flexGrow: 1}}>
           {openCategory && (
             <>
-              <Typography variant="h5" sx={{ marginBottom: 2, fontWeight: 'bold', color: 'primary.main' }}>
+              <Typography variant="h5" sx={{ marginBottom: 2, fontWeight: 'bold', color: 'black' }}>
                 Expenses for {openCategory}:
               </Typography>
 
               <TableContainer component={Paper} sx={{ boxShadow: 3, marginBottom: 6 }}>
                 <Table>
                   <TableHead>
-                    <TableRow sx={{ backgroundColor: 'lightblue' }}>
+                    <TableRow sx={{ backgroundColor: 'lightblue' ,border:'2px solid white' }}>
                       <TableCell sx={{ fontWeight: 'bold', color: theme.palette.text.primary }}>Description</TableCell>
                       <TableCell sx={{ fontWeight: 'bold', color: theme.palette.text.primary }}>Amount</TableCell>
                       <TableCell sx={{ fontWeight: 'bold', color: theme.palette.text.primary }}>Category</TableCell>
@@ -250,10 +247,10 @@ function DemoPageContent({ pathname, router }) {
                         <TableRow
                           key={expense.id}
                           sx={{
-                            backgroundColor:
-                              index % 2 === 0
-                                ? theme.palette.action.hover
-                                : theme.palette.background.default,
+                            backgroundColor:'white',
+                            border:'2px solid white'
+                              
+                                
                           }}
                         >
                           <TableCell sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 150, color: theme.palette.text.secondary }}>

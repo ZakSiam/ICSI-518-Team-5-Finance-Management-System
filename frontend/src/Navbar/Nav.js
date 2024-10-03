@@ -19,8 +19,8 @@ const customTheme = createTheme({
     light: {
       palette: {
         background: {
-          default: '#F9F9FE',
-          paper: '#EEEEF9',
+          default: 'white',
+          paper: 'white',
         },
       },
     },
@@ -111,6 +111,7 @@ function Nav(props) {
       theme={customTheme}
       window={demoWindow}
       branding={{
+        // logo: <img src="./Navbar/design.gif"  />,
         title: (
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
             <Typography variant="h6" component="div">

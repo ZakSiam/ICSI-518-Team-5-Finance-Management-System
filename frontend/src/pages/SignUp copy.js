@@ -11,19 +11,19 @@ import Link from '@mui/material/Link';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar'; // Import Snackbar
+import Alert from '@mui/material/Alert'; // Import Alert for styled alerts
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import getSignUpTheme from '../shared-theme/getSignUpTheme'; 
 import TemplateFrame from '../components/TemplateFrame'; 
 import { Link as RouterLink } from 'react-router-dom';
-import g3 from '../gif/g3.gif';
+import g3 from '../gif/g3.gif'; // Import your GIF
 
 const MainContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   height: '100vh',
   position: 'relative',
-  background: 'linear-gradient(to bottom, #2196F3, #E3F2FD)',
+  background: 'linear-gradient(to bottom, #2196F3, #E3F2FD)', // Blue gradient
   overflow: 'hidden',
 }));
 
@@ -47,7 +47,7 @@ const HalfCircle = styled(Box)(({ theme }) => ({
   height: '100%',
   backgroundColor: 'white',
   borderRadius: '50%',
-  clipPath: 'inset(0 50% 0 0)',
+  clipPath: 'inset(0 50% 0 0)', // Show only the left half
   border: '1.5px solid grey',
   zIndex: 0,
   display: 'flex',
@@ -57,9 +57,9 @@ const HalfCircle = styled(Box)(({ theme }) => ({
 }));
 
 export default function SignUp() {
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [name, setName] = React.useState(''); // State for name input
+  const [email, setEmail] = React.useState(''); // State for email input
+  const [password, setPassword] = React.useState(''); // State for password input
 
   const [nameError, setNameError] = React.useState(false);
   const [nameErrorMessage, setNameErrorMessage] = React.useState('');
@@ -68,11 +68,8 @@ export default function SignUp() {
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
 
-  const [openSnackbar, setOpenSnackbar] = React.useState(false);
-  const [snackbarMessage, setSnackbarMessage] = React.useState(''); // State for the Snackbar message
-  const [snackbarSeverity, setSnackbarSeverity] = React.useState('success'); // State for severity (success or error)
-
-  const SignUpTheme = createTheme(getSignUpTheme('light'));
+  const [openSnackbar, setOpenSnackbar] = React.useState(false); // State for Snackbar
+  const SignUpTheme = createTheme(getSignUpTheme('light')); // Default theme
 
   const validateInputs = () => {
     let isValid = true;
@@ -95,7 +92,6 @@ export default function SignUp() {
       setPasswordError(false);
       setPasswordErrorMessage('');
     }
-
     if (!name || name.length < 1) {
       setNameError(true);
       setNameErrorMessage('Name is required.');
@@ -108,8 +104,28 @@ export default function SignUp() {
     return isValid;
   };
 
+  /* const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    if (validateInputs()) {
+      console.log({
+        name: name,
+        email: email,
+        password: password,
+      });
+
+      // Show success Snackbar after valid sign up
+      setOpenSnackbar(true);
+      
+      // Clear the input fields
+      setName('');
+      setEmail('');
+      setPassword('');
+    }
+  }; */
+
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault();  // Prevent the default form submission
 
     if (!validateInputs()) {
       return;
@@ -123,27 +139,21 @@ export default function SignUp() {
         email: data.get('email'),
         password: data.get('password'),
       });
-
-      setSnackbarMessage('User registered successfully!');
-      setSnackbarSeverity('success');
-      setOpenSnackbar(true);
-
-      setName('');
-      setEmail('');
-      setPassword('');
+      console.log('User registered successfully:', response.data);
+      setOpenSnackbar('User registered successfully:', response.data);
+      // Handle success: display a success message or redirect to login
     } catch (error) {
-      const errorMsg = error.response ? error.response.data['username'] [0]: error.message;
-      setSnackbarMessage(`Error during registration: ${errorMsg}`);
-      setSnackbarSeverity('error');
-      setOpenSnackbar(true);
+      setOpenSnackbar('Error during registration:', error.response ? error.response.data : error.message);
+      console.error('Error during registration:', error.response ? error.response.data : error.message);
+      // Handle error: display an error message
     }
   };
-
+  
   const handleCloseSnackbar = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
-    setOpenSnackbar(false);
+    setOpenSnackbar(false); // Close Snackbar when user dismisses it
   };
 
   return (
@@ -185,7 +195,7 @@ export default function SignUp() {
                     fullWidth
                     id="name"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => setName(e.target.value)} // Update name state on change
                     error={nameError}
                     helperText={nameErrorMessage}
                     color={nameError ? 'error' : 'primary'}
@@ -201,7 +211,7 @@ export default function SignUp() {
                     autoComplete="email"
                     variant="outlined"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)} // Update email state on change
                     error={emailError}
                     helperText={emailErrorMessage}
                     color={emailError ? 'error' : 'primary'}
@@ -218,7 +228,7 @@ export default function SignUp() {
                     autoComplete="new-password"
                     variant="outlined"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)} // Update password state on change
                     error={passwordError}
                     helperText={passwordErrorMessage}
                     color={passwordError ? 'error' : 'primary'}
@@ -239,8 +249,8 @@ export default function SignUp() {
                   Already have an account?{' '}
                   <span>
                     <Link
-                      to="/"
-                      component={RouterLink}
+                      to="/"  
+                      component={RouterLink}  
                       variant="body2"
                       sx={{ alignSelf: 'center' }}
                     >
@@ -255,20 +265,21 @@ export default function SignUp() {
             <img 
               src={g3} 
               alt="Decorative GIF" 
-              style={{ width: '39%', marginRight: '50%', marginBottom: '5%' }} 
+              style={{ width: '39%', marginRight: '50%', marginBottom: '5%'}} // Adjust size and position
             />
           </HalfCircle>
         </MainContainer>
 
-        {/* Snackbar for dynamic messages */}
+        {/* Snackbar for success message */}
         <Snackbar
           open={openSnackbar}
           autoHideDuration={6000}
           onClose={handleCloseSnackbar}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' ,}} // Customize position
         >
-          <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity} sx={{ width: '100%' }}>
-            {snackbarMessage}
+          <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' , background: 'linear-gradient(to right, #2196F3, #21CBF3)', 
+                  color: 'white',border: '1.5px solid black' }}>
+            Successfully signed up! Please login now.
           </Alert>
         </Snackbar>
       </ThemeProvider>

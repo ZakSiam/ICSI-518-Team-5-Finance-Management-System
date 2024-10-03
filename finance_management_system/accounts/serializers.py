@@ -27,5 +27,5 @@ class ExpenseSerializer(serializers.ModelSerializer):
 class RecuringExpenseSerializer(serializers.ModelSerializer):
     class Meta:
         model = RecurringExpense
-        # fields=['id','description','amount', 'category', 'frequency', 'date']
-        fields=['id','description','amount', 'category', 'date']
+        fields=['id','description','amount', 'category', 'frequency', 'date']
+        # fields=['id','description','amount', 'category', 'date']

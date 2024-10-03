@@ -5,11 +5,14 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 
+
 from .serializers import UserSerializer, ExpenseSerializer, RecuringExpenseSerializer
 from .models import Expense, RecurringExpense
 
 from django.views.decorators.csrf import csrf_exempt
-from datetime import datetime
+from datetime import datetime, timedelta
+
+from rest_framework_simplejwt.tokens import RefreshToken  # Using SimpleJWT for token generation
 
 # Home view
 def home(request):
@@ -27,8 +30,8 @@ def register_user(request):
 
 
 # Login User
-@api_view(['POST'])
-def login_user(request):
+# @api_view(['POST'])
+# def login_user(request):
     username = request.data.get('username')
     password = request.data.get('password')
     user = authenticate(username=username, password=password)
@@ -36,6 +39,28 @@ def login_user(request):
         login(request, user)
         return Response({"message": "Login successful"}, status=status.HTTP_200_OK)
     return Response({"error": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+@api_view(['POST'])
+def login_user(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+    
+    # Authenticate the user
+    user = authenticate(username=username, password=password)
+    
+    if user is not None:
+        # Generate JWT token
+        refresh = RefreshToken.for_user(user)
+        return Response({
+            "message": "Login successful",
+            "refresh": str(refresh),
+            "access": str(refresh.access_token),
+        }, status=status.HTTP_200_OK)
+    else:
+        return Response({"error": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 # Logout User
@@ -100,13 +125,17 @@ def expense_list(request):
 
         # Retrieve all expenses initially
         expenses = Expense.objects.all()
-        
+
         # Filter expenses if both dates are provided
         if start_date and end_date:
             try:
                 # Parse dates to ensure valid format
                 start_date = datetime.strptime(start_date, '%Y-%m-%d')
                 end_date = datetime.strptime(end_date, '%Y-%m-%d')
+
+                # Adjust end_date to include the entire day
+                end_date = end_date + timedelta(days=1) - timedelta(seconds=1)
+
                 expenses = expenses.filter(date__range=(start_date, end_date))
             except ValueError:
                 return Response({"error": "Invalid date format. Use YYYY-MM-DD."}, status=status.HTTP_400_BAD_REQUEST)

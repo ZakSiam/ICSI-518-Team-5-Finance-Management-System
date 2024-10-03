@@ -55,6 +55,23 @@ export default function SignIn(props) {
     setOpen(false);
   };
 
+  /* const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    if (!validateInputs()) {
+      return; // If inputs are invalid, return early
+    }
+
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+
+    // After successful validation, navigate to the navbar
+    navigate('/navbar'); // Navigate to the navbar
+  }; */
+
   const handleSubmit = async (event) => {
     event.preventDefault();  // Prevent default form submission
 
@@ -65,18 +82,9 @@ export default function SignIn(props) {
         username: data.get('email'),
         password: data.get('password'),
       });
-
-      // Save the token in localStorage
-      const { access, refresh } = response.data; // Get the tokens
-
-      // Store the access and refresh tokens in localStorage or sessionStorage
-      localStorage.setItem('accessToken', access);
-      localStorage.setItem('refreshToken', refresh);
-
-      //console.log(localStorage);
-
       console.log('Login successful:', response.data);
-      navigate('/navbar'); // Navigate to the navbar page after successful login
+      navigate('/navbar');
+      // Handle success: save the session token or redirect the user
     } catch (error) {
       console.error('Error during login:', error.response ? error.response.data : error.message);
       // Handle error: display an error message
@@ -88,6 +96,15 @@ export default function SignIn(props) {
     const password = document.getElementById('password');
 
     let isValid = true;
+
+    /* if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
+      setEmailError(true);
+      setEmailErrorMessage('Please enter a valid email address.');
+      isValid = false;
+    } else {
+      setEmailError(false);
+      setEmailErrorMessage('');
+    } */
 
     if (!password.value || password.value.length < 6) {
       setPasswordError(true);
