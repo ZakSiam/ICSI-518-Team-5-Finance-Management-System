@@ -1,0 +1,74 @@
+/* General Styles */
+.expense-summary {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--background-color, #fff); /* Use CSS variables for dark mode compatibility */
+    color: var(--text-color, #333);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading */
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Date Filters */
+  .date-filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .date-filters button {
+    background-color: var(--primary-color, #007bff);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .date-filters input {
+    padding: 10px;
+    border: 1px solid var(--border-color, #ccc);
+    border-radius: 4px;
+    flex: 1;
+    margin: 0 5px;
+  }
+  
+  /* Table Styles */
+  .expense-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .expense-table th, .expense-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color, #ccc);
+  }
+  
+  .expense-table th {
+    background-color: var(--header-bg-color, #f2f2f2);
+    font-weight: bold;
+  }
+  
+  .expense-table tbody tr:nth-child(even) {
+    background-color: var(--row-bg-color, #f9f9f9);
+  }
+  
+  /* Empty State */
+  .expense-table tbody tr.empty {
+    text-align: center;
+    background-color: var(--empty-state-bg-color, #fff);
+  }
+  
+  .expense-table tbody tr.empty td {
+    padding: 20px;
+    font-style: italic;
+    color: var(--empty-state-text-color, #aaa);
+  }
+  
