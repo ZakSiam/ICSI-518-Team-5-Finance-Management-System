@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-w1g)=!22+-jq_v#avqh&uxm)mek_r&a1u@$_$-3(s3#ypsvgrd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+
+# ALLOWED_HOSTS = ['52.91.96.86', 'localhost', '127.0.0.1']
+# For testing only, you can use:
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'ml_app',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -49,7 +54,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5173",
+# ]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 ROOT_URLCONF = 'finance_management_backend.urls'
 
