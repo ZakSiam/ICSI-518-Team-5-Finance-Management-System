@@ -77,3 +77,8 @@
 
 - **Nitish Arjula**:  
   implemented both frontend and backend for adding and categorizing expenses for splitwise.
+
+
+# Notes
+There are no further updates after the Final Sprint (Sprint 3). 
+Each member's individual contributions (including their source code) can be found in their respective GitHub branches. For instance, the branch titled machine_learning_backend, created by Zakaria Shams Siam, contains the codebase for all machine learning-based features implemented by him. The same applies to other branches and team members as well.
