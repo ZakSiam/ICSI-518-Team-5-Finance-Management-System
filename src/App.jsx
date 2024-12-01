@@ -22,12 +22,14 @@ import Goals from './pages/Goals';
 import Incomes from './pages/Income';
 import MyProfile from './pages/MyProfile';
 import FinScore from './pages/FInScore';
-
+import LoanEligibility from './pages/LoanEligibility';
+import ExpensePredictor from './pages/ExpensePredictor';
 import Friends from './pages/Friends';
 import Groups from './pages/Groups';
 import Expenses from './pages/Expense';
 import SWDashboard from './pages/SWDashboard';
-
+import GroupExpensePredictor from './pages/GroupExpensePredictor';
+import GroupExpenseAnalysis from './pages/GroupExpenseAnalysis';
 
 
 

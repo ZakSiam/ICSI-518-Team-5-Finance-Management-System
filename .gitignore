@@ -1,22 +1,24 @@
-# Ignore Python bytecode
-__pycache__/
-*.pyc
-*.pyo
-
-# Ignore environment files
-.env
-
-# Ignore logs and outputs
+# Logs
+logs
 *.log
-logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Ignore IDE/project-specific files
-.idea/
-.vscode/
+node_modules
+dist
+dist-ssr
+*.local
 
-# Ignore virtual environments
-venv/
-.venv/
-
-# Ignore other non-essential files
-node_modules/
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
