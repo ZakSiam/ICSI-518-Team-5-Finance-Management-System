@@ -122,17 +122,17 @@ function differenceInMonths(date1, date2) {
   
       // Calculate months difference from current date to start date
       const monthsDifference = differenceInMonths(now, startDate);
-      const dueDate = addMonths(startDate, monthsDifference);
+      const dateDue = addMonths(startDate, monthsDifference);
       console.log("monthsdiff"+monthsDifference);
-      console.log("duedate"+dueDate);
+      console.log("duedate"+dateDue);
       console.log(payment.reminderDuration);
-      console.log(dueDate <= oneDayFromNow)
-      console.log(dueDate >= now)
+      console.log(dateDue <= oneDayFromNow)
+      console.log(dateDue >= now)
       // Show notification if the months difference is less than or equal to the reminderDuration
-      if (monthsDifference <= parseInt(payment.reminderDuration) && dueDate <= oneDayFromNow && dueDate >= now) {
+      if (monthsDifference <= parseInt(payment.reminderDuration) && dateDue <= oneDayFromNow && dateDue >= now) {
         const notificationTitle = "Payment Date";
         const notificationOptions = {
-          body: `Upcoming payment for ${payment.name}. Your payment of $${payment.amount} is due on ${dueDate}`,
+          body: `Upcoming payment for ${payment.name}. Your payment of $${payment.amount} is due on ${dateDue}`,
           icon: "/images/payment-icon.png",
         };
         
