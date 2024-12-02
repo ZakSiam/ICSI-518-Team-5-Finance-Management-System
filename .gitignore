@@ -2,7 +2,13 @@
 .env
 
 # Ignore log files
+logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
 # Ignore compiled Python files
 __pycache__/
@@ -13,10 +19,26 @@ venv/
 # Ignore node_modules folder
 node_modules/
 
+# Ignore distribution directories
+dist
+dist-ssr
+
 # Ignore SQLite database file
 finance_management_system/db.sqlite3
 
 # Ignore cookies.txt file used for cURL testing
 finance_management_system/cookies.txt
 
+# Ignore local development files
+*.local
 
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
