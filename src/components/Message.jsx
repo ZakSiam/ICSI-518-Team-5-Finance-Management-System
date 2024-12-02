@@ -3,7 +3,7 @@ const Message = ({ notification }) => {
     return (
       <>
         <div id="notificationHeader">
-          {/* image is optional */}
+          {/* optional image */}
           {notification.image && (
             <div id="imageContainer">
               <img src={notification.image} width={100} />
