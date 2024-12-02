@@ -1,0 +1,9 @@
+button.log-in-btn,button.sign-up-btn,button.forgot-pass-btn,button.Login-btn
+{
+    text-transform: none; 
+}
+.form-container > *:not(style)
+ {
+    margin: 5px;
+    width: 30ch;
+}
