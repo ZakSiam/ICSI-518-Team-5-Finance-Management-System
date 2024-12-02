@@ -19,7 +19,7 @@ export default function Categories() {
     icon: '',
     color: '#000000',
   });
-
+//comments
   useEffect(() => {
     if (user) {
       const loadCategories = async () => {
