@@ -18,7 +18,7 @@ const firebaseConfig = {
   measurementId: "G-PFYM2TRDMR"
 };
 
-// Initialize Firebase
+// Initialized Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);

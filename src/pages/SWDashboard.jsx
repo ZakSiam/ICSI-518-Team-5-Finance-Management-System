@@ -29,7 +29,7 @@ const Dashboard = () => {
   const [viewAsChart, setViewAsChart] = useState(false);
   const [expandedBalance, setExpandedBalance] = useState(false);
   const [expandedOwe, setExpandedOwe] = useState(false);
-
+//comments
   useEffect(() => {
     const fetchExpensesAndFriends = async () => {
       if (!user) return;
